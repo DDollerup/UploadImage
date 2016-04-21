@@ -1,0 +1,32 @@
+﻿@model List<UploadImage.Models.BaseModels.Shoe>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form action="/Home/AddShoeSubmit" method="post" enctype="multipart/form-data">
+    <input type="text" name="Name" placeholder="Type Name..." />
+    <br />
+    <input type="text" name="Price" placeholder="Type Price..." />
+    <br />
+    <input type="text" name="SalePrice" placeholder="Type SalePrice..." />
+    <br />
+    <input type="hidden" name="Date" value="@DateTime.Today.ToString("dd-MM-yyyy")"  />
+    <br />
+    <input type="file" id="file" name="file" />
+    <br />
+    <input type="submit" value="Add Shoe" />
+</form>
+
+
+@foreach (var shoe in Model)
+{
+    <table>
+        <tr>
+            <td>
+                <img src="~/Content/Images/Shoes/@shoe.Image" />
+            </td>
+        </tr>
+    </table>
+}
